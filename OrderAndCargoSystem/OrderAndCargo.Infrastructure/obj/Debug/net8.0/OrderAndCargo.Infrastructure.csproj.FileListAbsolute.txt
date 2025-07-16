@@ -1,0 +1,17 @@
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\bin\Debug\net8.0\OrderAndCargo.Infrastructure.deps.json
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\bin\Debug\net8.0\OrderAndCargo.Infrastructure.runtimeconfig.json
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\bin\Debug\net8.0\OrderAndCargo.Infrastructure.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\bin\Debug\net8.0\OrderAndCargo.Infrastructure.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\bin\Debug\net8.0\OrderAndCargo.Domain.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\bin\Debug\net8.0\OrderAndCargo.Domain.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.AssemblyInfo.cs
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAnd.E0A165ED.Up2Date
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\refint\OrderAndCargo.Infrastructure.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\OrderAndCargo.Infrastructure.genruntimeconfig.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Infrastructure\obj\Debug\net8.0\ref\OrderAndCargo.Infrastructure.dll

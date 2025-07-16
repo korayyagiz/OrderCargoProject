@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{85FFAAA6-FC54-46A2-B8E4-80B391B2F46E}|OrderAndCargo.Domain\\OrderAndCargo.Domain.csproj|c:\\users\\yagiz\\source\\repos\\orderandcargosystem\\orderandcargo.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85FFAAA6-FC54-46A2-B8E4-80B391B2F46E}|OrderAndCargo.Domain\\OrderAndCargo.Domain.csproj|solutionrelative:orderandcargo.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85FFAAA6-FC54-46A2-B8E4-80B391B2F46E}|OrderAndCargo.Domain\\OrderAndCargo.Domain.csproj|c:\\users\\yagiz\\source\\repos\\orderandcargosystem\\orderandcargo.domain\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85FFAAA6-FC54-46A2-B8E4-80B391B2F46E}|OrderAndCargo.Domain\\OrderAndCargo.Domain.csproj|solutionrelative:orderandcargo.domain\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{173A9FB0-5489-44EA-B85D-E8267825F173}|OrderAndCargo.API\\OrderAndCargo.API.csproj|c:\\users\\yagiz\\source\\repos\\orderandcargosystem\\orderandcargo.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{173A9FB0-5489-44EA-B85D-E8267825F173}|OrderAndCargo.API\\OrderAndCargo.API.csproj|solutionrelative:orderandcargo.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{173A9FB0-5489-44EA-B85D-E8267825F173}|OrderAndCargo.API\\OrderAndCargo.API.csproj|c:\\users\\yagiz\\source\\repos\\orderandcargosystem\\orderandcargo.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{173A9FB0-5489-44EA-B85D-E8267825F173}|OrderAndCargo.API\\OrderAndCargo.API.csproj|solutionrelative:orderandcargo.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 87,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.Domain\\Entities\\OrderItem.cs",
+              "RelativeDocumentMoniker": "OrderAndCargo.Domain\\Entities\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.Domain\\Entities\\OrderItem.cs",
+              "RelativeToolTip": "OrderAndCargo.Domain\\Entities\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T12:50:01.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.Domain\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "OrderAndCargo.Domain\\Entities\\Order.cs",
+              "ToolTip": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.Domain\\Entities\\Order.cs",
+              "RelativeToolTip": "OrderAndCargo.Domain\\Entities\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T12:50:00.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.API\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "OrderAndCargo.API\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.API\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "OrderAndCargo.API\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T10:20:11.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.API\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "OrderAndCargo.API\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\yagiz\\source\\repos\\OrderAndCargoSystem\\OrderAndCargo.API\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "OrderAndCargo.API\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T10:19:28.153Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

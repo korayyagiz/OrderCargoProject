@@ -1,0 +1,17 @@
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\bin\Debug\net8.0\OrderAndCargo.Application.deps.json
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\bin\Debug\net8.0\OrderAndCargo.Application.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\bin\Debug\net8.0\OrderAndCargo.Application.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\bin\Debug\net8.0\OrderAndCargo.Domain.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\bin\Debug\net8.0\OrderAndCargo.Infrastructure.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\bin\Debug\net8.0\OrderAndCargo.Domain.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\bin\Debug\net8.0\OrderAndCargo.Infrastructure.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAndCargo.Application.csproj.AssemblyReference.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAndCargo.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAndCargo.Application.AssemblyInfoInputs.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAndCargo.Application.AssemblyInfo.cs
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAndCargo.Application.csproj.CoreCompileInputs.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAnd.668C4060.Up2Date
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAndCargo.Application.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\refint\OrderAndCargo.Application.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\OrderAndCargo.Application.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Application\obj\Debug\net8.0\ref\OrderAndCargo.Application.dll

@@ -1,0 +1,11 @@
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\bin\Debug\net8.0\OrderAndCargo.Domain.deps.json
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\bin\Debug\net8.0\OrderAndCargo.Domain.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\bin\Debug\net8.0\OrderAndCargo.Domain.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\OrderAndCargo.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\OrderAndCargo.Domain.AssemblyInfoInputs.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\OrderAndCargo.Domain.AssemblyInfo.cs
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\OrderAndCargo.Domain.csproj.CoreCompileInputs.cache
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\OrderAndCargo.Domain.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\refint\OrderAndCargo.Domain.dll
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\OrderAndCargo.Domain.pdb
+C:\Users\yagiz\source\repos\OrderAndCargoSystem\OrderAndCargo.Domain\obj\Debug\net8.0\ref\OrderAndCargo.Domain.dll
