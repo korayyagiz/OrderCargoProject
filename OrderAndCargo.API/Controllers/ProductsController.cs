@@ -44,3 +44,4 @@ namespace OrderAndCargo.API.Controllers
         }
 
     }
+// Katmanlı yapı kuruldu.
