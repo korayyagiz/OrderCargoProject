@@ -8,8 +8,8 @@ namespace OrderAndCargo.Domain.Services
 {
     public interface ICargoService
     {
-        decimal CalculatePrice(Entities.Order order);
-        int CalculateDeliveryDays(Entities.Order order);
+        decimal CalculatePrice(OrderAndCargo.Domain.Entities.Order order);
+        int CalculateDeliveryDays(OrderAndCargo.Domain.Entities.Order order);
     }
-}
 
+}

@@ -14,11 +14,9 @@ namespace OrderAndCargo.Domain.Entities
         public decimal CargoPrice { get; set; }
         public DateTime OrderDate { get; set; }
 
+
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
-
     }
-
-
 }
 

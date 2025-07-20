@@ -46,6 +46,5 @@ namespace OrderAndCargo.Application.Handlers
 
             return Unit.Value;
         }
-
     }
 }

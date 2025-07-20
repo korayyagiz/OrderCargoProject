@@ -16,8 +16,8 @@ namespace OrderAndCargo.Application.Commands
 {
     public class CreateOrderCommand : IRequest<Guid>
     {
-        public List<OrderItemDto> Items { get; set; }  
-        public string CargoCompany { get; set; }
+        public List<OrderItemDto> Items { get; set; } = new();
+        public string CargoCompany { get; set; } = string.Empty;
     }
 }
 
