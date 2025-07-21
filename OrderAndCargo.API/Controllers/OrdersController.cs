@@ -16,11 +16,12 @@ namespace OrderAndCargo.API.Controllers
         private readonly IOrderRepository _orderRepository;
 
 
-
-        public OrdersController(IMediator mediator) 
+       
+        public OrdersController(IOrderRepository orderRepository)
         {
-            _mediator = mediator;
+            _orderRepository = orderRepository;
         }
+
 
         [HttpPost]
         public async Task<IActionResult> CreateOrder(CreateOrderCommand command)
@@ -61,15 +62,34 @@ namespace OrderAndCargo.API.Controllers
         }
         */
 
+        /*
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] OrderDto dto)
         {
             var order = await _orderRepository.GetByIdAsync(id);
             if (order == null)
-                return NotFound();
+                return NotFound("ID {id} ile eşleşen bir sipariş bulunamadı.");
+        */
 
-            // Şimdi eski order'ı güncelliyoruz
-            order.CargoCompany = dto.CargoCompany;
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] OrderDto dto)
+        {
+            if (id == Guid.Empty)
+            {
+                return BadRequest("Geçersiz sipariş ID'si.");
+            }
+
+            var order = await _orderRepository.GetByIdAsync(id);
+            if (order == null)
+            {
+                return NotFound($"ID {id} ile eşleşen sipariş bulunamadı.");
+            }
+
+            // güncelleme işlemleri altta
+        
+
+        // eski order'ı güncelleme
+        order.CargoCompany = dto.CargoCompany;
             order.OrderItems = dto.Items.Select(x => new OrderItem
             {
                 ProductId = x.ProductId,
@@ -77,7 +97,7 @@ namespace OrderAndCargo.API.Controllers
                 
             }).ToList();
 
-            await _orderRepository.SaveChangesAsync(); // zaten tracking ediyor
+            await _orderRepository.SaveChangesAsync(); // tracking ediyor
             return Ok();
         }
 
