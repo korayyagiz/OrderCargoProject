@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 */
 
 
-using OrderAndCargo.Infrastructure.Data;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using OrderAndCargo.Domain.Entities;
 using OrderAndCargo.Domain.Services;
+using OrderAndCargo.Infrastructure.Data;
 
 
 namespace OrderAndCargo.Application.Handlers
@@ -23,10 +24,15 @@ namespace OrderAndCargo.Application.Handlers
 
         private readonly OrderAndCargoDbContext _context;
 
-        public CreateOrderCommandHandler(OrderAndCargoDbContext context, IEnumerable<ICargoService> cargoServices)
+        private readonly ILogger<CreateOrderCommandHandler> _logger;
+
+
+        public CreateOrderCommandHandler(OrderAndCargoDbContext context, IEnumerable<ICargoService> cargoServices, ILogger<CreateOrderCommandHandler> logger)
         {
             _context = context;
             _cargoServices = cargoServices;
+            _logger = logger;
+
         }
 
 
@@ -37,37 +43,52 @@ namespace OrderAndCargo.Application.Handlers
 
         public async Task<Guid> Handle(Commands.CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            var order = new Order
+            try
             {
-                Id = Guid.NewGuid(),
-                OrderDate = DateTime.UtcNow,
-                CargoCompany = request.CargoCompany,
-                OrderItems = request.Items.Select(i => new OrderItem
+                _logger.LogInformation("Create işlemi başladı. CargoCompany: {CargoCompany}", request.CargoCompany);
 
+                var order = new Order
                 {
-                    ProductId = i.ProductId,
-                    ProductName = "ProductX", 
-                    Quantity = i.Quantity,
-                    UnitPrice = 100 
-                }).ToList()
-            };
+                    Id = Guid.NewGuid(),
+                    OrderDate = DateTime.UtcNow,
+                    CargoCompany = request.CargoCompany,
+                    OrderItems = request.Items.Select(i => new OrderItem
 
-            order.TotalPrice = order.OrderItems.Sum(i => i.UnitPrice * i.Quantity);
+                    {
+                        ProductId = i.ProductId,
+                        ProductName = "ProductX",
+                        Quantity = i.Quantity,
+                        UnitPrice = 100
+                    }).ToList()
+                };
 
-            var cargoService = _cargoServices.FirstOrDefault(x =>
-                x.GetType().Name.StartsWith(request.CargoCompany));
+                order.TotalPrice = order.OrderItems.Sum(i => i.UnitPrice * i.Quantity);
 
-            if (cargoService != null)
+                var cargoService = _cargoServices.FirstOrDefault(x =>
+                    x.GetType().Name.StartsWith(request.CargoCompany));
+
+                if (cargoService != null)
+                {
+                    order.CargoPrice = cargoService.CalculatePrice(order);
+                }
+
+                await _context.Orders.AddAsync(order);
+                await _context.SaveChangesAsync();
+
+
+                return order.Id;
+
+
+                // mevcut kodlarının hepsini bu try bloğuna al
+            }
+            catch (Exception ex)
             {
-                order.CargoPrice = cargoService.CalculatePrice(order);
+                _logger.LogError(ex, "Create işleminde hata oluştu.");
+                throw;
             }
 
-            await _context.Orders.AddAsync(order);
-            await _context.SaveChangesAsync();
-
-
-            return order.Id;
         }
+           
     }
 }
 

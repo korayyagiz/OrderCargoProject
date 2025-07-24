@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OrderAndCargo.Application.Commands;
 using OrderAndCargo.Application.Dto;
@@ -15,12 +16,32 @@ namespace OrderAndCargo.API.Controllers
 
         private readonly IOrderRepository _orderRepository;
 
+        private readonly IValidator<UpdateOrderCommand> _updateValidator;
+        private readonly IValidator<DeleteOrderCommand> _deleteValidator;
 
-       
-        public OrdersController(IOrderRepository orderRepository)
+        private readonly ILogger<OrdersController> _logger;
+        public OrdersController(
+            IOrderRepository orderRepository,
+            IMediator mediator,
+            IValidator<UpdateOrderCommand> updateValidator,
+            IValidator<DeleteOrderCommand> deleteValidator,
+            ILogger<OrdersController> logger)
         {
             _orderRepository = orderRepository;
+            _mediator = mediator;
+            _updateValidator = updateValidator;
+            _deleteValidator = deleteValidator;
+            _logger = logger;
         }
+
+
+        /*
+        public OrdersController(IOrderRepository orderRepository, IMediator mediator)
+        {
+            _orderRepository = orderRepository;
+            _mediator = mediator;
+        }
+        */
 
 
         [HttpPost]
@@ -39,8 +60,6 @@ namespace OrderAndCargo.API.Controllers
                     Quantity = i.Quantity
                 }).ToList()
             };
-
-            
 
             return Ok(orderId);
         }
@@ -74,6 +93,17 @@ namespace OrderAndCargo.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] OrderDto dto)
         {
+            var command = new UpdateOrderCommand
+            {
+                Id = id,
+                CargoCompany = dto.CargoCompany,
+                Items = dto.Items
+            };
+
+            var validationResult = await _updateValidator.ValidateAsync(command);
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors); // Hataları döner
+
             if (id == Guid.Empty)
             {
                 return BadRequest("Geçersiz sipariş ID'si.");
@@ -85,11 +115,7 @@ namespace OrderAndCargo.API.Controllers
                 return NotFound($"ID {id} ile eşleşen sipariş bulunamadı.");
             }
 
-            // güncelleme işlemleri altta
-        
-
-        // eski order'ı güncelleme
-        order.CargoCompany = dto.CargoCompany;
+            order.CargoCompany = dto.CargoCompany;
             order.OrderItems = dto.Items.Select(x => new OrderItem
             {
                 ProductId = x.ProductId,
@@ -97,7 +123,7 @@ namespace OrderAndCargo.API.Controllers
                 
             }).ToList();
 
-            await _orderRepository.SaveChangesAsync(); // tracking ediyor
+            await _orderRepository.SaveChangesAsync(); 
             return Ok();
         }
 
@@ -105,9 +131,14 @@ namespace OrderAndCargo.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
+            var command = new DeleteOrderCommand { Id = id };
+
+            var validationResult = await _deleteValidator.ValidateAsync(command);
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors); // Hataları döner
+
             await _mediator.Send(new DeleteOrderCommand(id));
             return NoContent();
         }
     }
 }
-// Katmanlı yapı kuruldu.

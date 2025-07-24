@@ -1,10 +1,9 @@
-﻿using System;
+﻿using OrderAndCargo.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using OrderAndCargo.Domain.Entities;
 
 namespace OrderAndCargo.Domain.Repositories
 {
@@ -19,6 +18,4 @@ namespace OrderAndCargo.Domain.Repositories
         Task SaveChangesAsync();
         List<Order> Orders { get; }
     }
-
 }
-

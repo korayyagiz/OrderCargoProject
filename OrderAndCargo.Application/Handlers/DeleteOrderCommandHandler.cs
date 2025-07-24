@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using OrderAndCargo.Application.Commands;
 using OrderAndCargo.Domain.Repositories;
 using OrderAndCargo.Infrastructure.Data;
@@ -17,15 +18,20 @@ namespace OrderAndCargo.Application.Handlers
         // OrderItemRepository eklemem gerekiyor
         private readonly IOrderItemRepository _orderItemRepository;
 
-        public DeleteOrderCommandHandler(IOrderRepository repository,/*buraya tanımlama*/IOrderItemRepository orderItemRepository, OrderAndCargoDbContext context)
+        private readonly ILogger<DeleteOrderCommandHandler> _logger;
+
+        public DeleteOrderCommandHandler(IOrderRepository repository,/*buraya tanımlama*/IOrderItemRepository orderItemRepository, ILogger<DeleteOrderCommandHandler> logger, OrderAndCargoDbContext context)
         {
             _repository = repository;
             _orderItemRepository = orderItemRepository;
+            _logger = logger;
         }
 
-
+        /*
         public async Task<Unit> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Delete işlemi başladı. ID: {OrderId}", request.Id);
+
             try { await _repository.GetByIdAsync(request.Id); }
             catch (Exception ex) 
             { }
@@ -42,6 +48,31 @@ namespace OrderAndCargo.Application.Handlers
             await _repository.SaveChangesAsync();
 
             return Unit.Value;
+            _logger.LogError(ex, "Delete işleminde hata oluştu. ID: {OrderId}", request.Id);
+            throw;
         }
+        */
+        public async Task<Unit> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Delete işlemi başladı. ID: {OrderId}", request.Id);
+
+            try
+            {
+                var order = await _repository.GetByIdAsync(request.Id);
+                if (order is null)
+                    throw new Exception("Order not found");
+
+                _repository.Remove(order);
+                await _repository.SaveChangesAsync();
+
+                return Unit.Value;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Delete işleminde hata oluştu. ID: {OrderId}", request.Id);
+                throw; // Hataları yukarı fırlatmaya devam et, middleware yakalasın
+            }
+        }
+
     }
 }

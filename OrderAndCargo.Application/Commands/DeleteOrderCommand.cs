@@ -15,6 +15,9 @@ namespace OrderAndCargo.Application.Commands
         {
             Id = id;
         }
+
+        public DeleteOrderCommand() { }
+
     }
 }
 
