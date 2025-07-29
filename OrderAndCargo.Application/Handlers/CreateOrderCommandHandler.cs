@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using OrderAndCargo.Domain.Entities;
+using OrderAndCargo.Domain.Repositories;
 using OrderAndCargo.Domain.Services;
 using OrderAndCargo.Infrastructure.Data;
 
@@ -20,26 +21,21 @@ namespace OrderAndCargo.Application.Handlers
     public class CreateOrderCommandHandler : IRequestHandler<Commands.CreateOrderCommand, Guid>
     {
 
+
         private readonly IEnumerable<ICargoService> _cargoServices;
 
         private readonly OrderAndCargoDbContext _context;
 
         private readonly ILogger<CreateOrderCommandHandler> _logger;
 
-
-        public CreateOrderCommandHandler(OrderAndCargoDbContext context, IEnumerable<ICargoService> cargoServices, ILogger<CreateOrderCommandHandler> logger)
+        
+        public CreateOrderCommandHandler(OrderAndCargoDbContext context, IEnumerable<ICargoService> cargoServices, ILogger<CreateOrderCommandHandler> logger) // IOrderRepository orderRepository)
         {
             _context = context;
             _cargoServices = cargoServices;
             _logger = logger;
-
         }
-
-
-        public CreateOrderCommandHandler(IEnumerable<ICargoService> cargoServices)
-        {
-            _cargoServices = cargoServices;
-        }
+        
 
         public async Task<Guid> Handle(Commands.CreateOrderCommand request, CancellationToken cancellationToken)
         {
@@ -79,7 +75,7 @@ namespace OrderAndCargo.Application.Handlers
                 return order.Id;
 
 
-                // mevcut kodlarının hepsini bu try bloğuna al
+                
             }
             catch (Exception ex)
             {
