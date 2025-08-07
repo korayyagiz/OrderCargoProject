@@ -31,4 +31,3 @@ namespace OrderAndCargo.API.Controllers
         }
     }
 }
-// Katmanlý yapý kuruldu.

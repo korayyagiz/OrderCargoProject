@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using OrderAndCargo.Application.Commands;
 using OrderAndCargo.Domain.Entities;
 using OrderAndCargo.Infrastructure.Data;
 
@@ -9,11 +12,14 @@ namespace OrderAndCargo.API.Controllers
         [Route("api/[controller]")]
         public class ProductsController : ControllerBase
         {
-            private readonly OrderAndCargoDbContext _context;
 
-            public ProductsController(OrderAndCargoDbContext context)
+         private readonly IMediator _mediator; 
+         private readonly OrderAndCargoDbContext _context;
+
+            public ProductsController(IMediator mediator, OrderAndCargoDbContext context)
             {
-                _context = context;
+            _mediator = mediator;
+            _context = context;
             }
 
             [HttpPut("{id}")]
@@ -41,7 +47,19 @@ namespace OrderAndCargo.API.Controllers
                 _context.SaveChanges();
                 return NoContent();
             }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateProductCommand command)
+        {
+            var id = await _mediator.Send(command);
+            return Ok(id);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _context.Products.ToListAsync();
+            return Ok(products);
+        }
     }
-// Katmanlı yapı kuruldu.
+}

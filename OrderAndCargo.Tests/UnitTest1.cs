@@ -5,7 +5,6 @@ using OrderAndCargo.Application.Dto;
 using OrderAndCargo.Application.Handlers;
 using OrderAndCargo.Domain.Entities;
 using OrderAndCargo.Domain.Repositories;
-using OrderAndCargo.Domain.Services;
 using OrderAndCargo.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -38,10 +37,10 @@ namespace OrderAndCargo.Tests
             var command = new UpdateOrderCommand
             {
                 Id = orderId,
-                CargoCompany = "Aras",
-                Items = new List<OrderItemDto>
+                CargoCompany = 1,
+                Items = new List<UpdateOrderItemDto>
                 {
-                    new OrderItemDto { ProductId = Guid.NewGuid(), Quantity = 2 }
+                 new UpdateOrderItemDto { OrderId = Guid.NewGuid(), Quantity = 2 }
                 }
             };
 
@@ -50,33 +49,34 @@ namespace OrderAndCargo.Tests
 
             _orderRepositoryMock.Setup(x => x.SaveChangesAsync())
                 .Returns(Task.CompletedTask);
-
             
             var result = await _handler.Handle(command, CancellationToken.None);
-
-            
+      
             _orderRepositoryMock.Verify(x => x.SaveChangesAsync(), Times.Once);
         }
 
         [Fact]
         public async Task Handle_OrderNotFound_ThrowsException()
-        {
-            
-            var orderId = Guid.NewGuid();
+        {       
+            var orderId = Guid.NewGuid();      
             var command = new UpdateOrderCommand
             {
                 Id = orderId,
-                CargoCompany = "Yurtiçi",
-                Items = new List<OrderItemDto>()
+                CargoCompany = 1,
+                Items = new List<UpdateOrderItemDto>
+                {
+                 new UpdateOrderItemDto
+                {
+            OrderId = Guid.NewGuid(),
+            Quantity = 2
+                }
+            }
             };
 
             _orderRepositoryMock.Setup(x => x.GetByIdAsync(orderId))
                 .ReturnsAsync((Order)null); 
-
             
             await Assert.ThrowsAsync<Exception>(() => _handler.Handle(command, CancellationToken.None));
         }
     }
-
-    
 }

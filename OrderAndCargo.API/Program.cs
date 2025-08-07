@@ -8,8 +8,9 @@ using OrderAndCargo.Application.Handlers;
 using OrderAndCargo.Domain.Repositories;
 using OrderAndCargo.Infrastructure.Data;
 using OrderAndCargo.Infrastructure.Repositories;
-using static OrderAndCargo.Application.Handlers.UpdateOrderCommandHandler;
 using Serilog;
+using System.Text.Json.Serialization;
+using static OrderAndCargo.Application.Handlers.UpdateOrderCommandHandler;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -42,6 +43,19 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateOrderCommandHandler).Assembly));
 
+
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
+builder.Services.AddScoped<MNGCargoService>();
+builder.Services.AddScoped<ArasCargoService>();
+builder.Services.AddScoped<YurticiCargoService>();
+
+
 var app = builder.Build();
 
 app.UseMiddleware<OrderAndCargo.API.Middlewares.ApiExceptionMiddleware>();
@@ -53,6 +67,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
+
 
 app.UseHttpsRedirection();
 

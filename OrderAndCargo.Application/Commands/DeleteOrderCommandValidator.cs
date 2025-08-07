@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 public class DeleteOrderCommandValidator : AbstractValidator<DeleteOrderCommand>
 {
     private readonly IOrderRepository _orderRepository;
-
     public DeleteOrderCommandValidator(IOrderRepository orderRepository)
     {
         _orderRepository = orderRepository;
@@ -20,7 +19,6 @@ public class DeleteOrderCommandValidator : AbstractValidator<DeleteOrderCommand>
             .MustAsync(async (id, cancellation) => await OrderExists(id))
             .WithMessage("Girilen sipariş bulunamadı.");
     }
-
     private async Task<bool> OrderExists(Guid id)
     {
         var order = await _orderRepository.GetByIdAsync(id);

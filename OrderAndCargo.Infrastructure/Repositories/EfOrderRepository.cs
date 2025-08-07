@@ -1,5 +1,4 @@
-﻿
-using OrderAndCargo.Domain.Entities;
+﻿using OrderAndCargo.Domain.Entities;
 using OrderAndCargo.Domain.Repositories;
 using OrderAndCargo.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -11,21 +10,16 @@ namespace OrderAndCargo.Infrastructure.Repositories
     {
         private readonly OrderAndCargoDbContext _context;
         protected readonly DbSet<Order> _dbSet;
-
-
         public EfOrderRepository(OrderAndCargoDbContext context) : base(context) { _context = context; _dbSet = context.Set<Order>(); } 
 
+        public async Task<List<Order>> GetAllWithItemsAsync()
+    {
+        return await _context.Orders
+            .Include(o => o.OrderItems) 
+            .ToListAsync();
+    }
         public List<Order> Orders => _context.Orders.ToList();
-
         public async Task<Order?> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
-
-        // <T> GR
-
-                /*  .Include(o => o.OrderItems)        // update / delete’te de lazım
-                  .AsNoTracking()                    
-                  .FirstOrDefaultAsync(o => o.Id == id); */
-                
-
 
         public async Task<Order?> GetOrderWithItemsAsync(Guid id) => await _context.Orders
                 .Include(o => o.OrderItems)
@@ -37,10 +31,12 @@ namespace OrderAndCargo.Infrastructure.Repositories
         }
 
         public void Remove(Order order) => _context.Orders.Remove(order);
-
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
+        public Task<List<Order>> GetOrdersWithItemsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
-
     public class EfOrderItemRepository : IOrderItemRepository
     {
         private readonly OrderAndCargoDbContext _context;
@@ -49,7 +45,6 @@ namespace OrderAndCargo.Infrastructure.Repositories
         {
             _context = context;
         }
-
         public void RemoveRange(List<OrderItem> items)
         {
             _context.OrderItems.RemoveRange(items);
@@ -60,6 +55,5 @@ namespace OrderAndCargo.Infrastructure.Repositories
             return _context.SaveChangesAsync();
         }
     }
-
 }
 

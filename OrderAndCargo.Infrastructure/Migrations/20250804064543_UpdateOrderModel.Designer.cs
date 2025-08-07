@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderAndCargo.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using OrderAndCargo.Infrastructure.Data;
 namespace OrderAndCargo.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderAndCargoDbContext))]
-    partial class OrderAndCargoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250804064543_UpdateOrderModel")]
+    partial class UpdateOrderModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,6 +61,9 @@ namespace OrderAndCargo.Infrastructure.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("OrderId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -76,6 +82,8 @@ namespace OrderAndCargo.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("OrderId1");
 
                     b.HasIndex("ProductId");
 
@@ -108,6 +116,10 @@ namespace OrderAndCargo.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OrderAndCargo.Domain.Entities.Order", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId1");
+
                     b.HasOne("OrderAndCargo.Domain.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -121,6 +133,8 @@ namespace OrderAndCargo.Infrastructure.Migrations
 
             modelBuilder.Entity("OrderAndCargo.Domain.Entities.Order", b =>
                 {
+                    b.Navigation("Items");
+
                     b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618

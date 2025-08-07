@@ -17,5 +17,7 @@ namespace OrderAndCargo.Domain.Repositories
 
         Task SaveChangesAsync();
         List<Order> Orders { get; }
+        Task<List<Order>> GetAllWithItemsAsync();
+        Task<List<Order>> GetOrdersWithItemsAsync();
     }
 }

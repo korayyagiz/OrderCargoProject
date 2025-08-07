@@ -5,7 +5,6 @@ namespace OrderAndCargo.Application.Exceptions
     public class ApiValidationException : Exception
     {
         public IDictionary<string, string[]> Errors { get; }
-
         public ApiValidationException(IEnumerable<ValidationFailure> failures)
         {
             Errors = failures
